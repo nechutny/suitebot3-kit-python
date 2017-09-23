@@ -30,7 +30,7 @@ class _PlayersAnt(Ant):
     def get_player(self) -> int:
         return self.player_state.player_id
 
-    def get_position(self) -> int:
+    def get_position(self) -> Point:
         return self.position
 
     def get_last_move(self) -> Direction:
