@@ -21,7 +21,6 @@ class SampleBotAi(BotAi):
     incAntCount = 8
     incAntRound = 80
 
-
     def __init__(self, game_setup: GameSetup):
         ''' Called before each new game '''
         self.my_id = game_setup.ai_player_id
@@ -52,7 +51,7 @@ class SampleBotAi(BotAi):
         left = self.getFieldInDirection(position, Directions.LEFT, game_state)
         right = self.getFieldInDirection(position, Directions.RIGHT, game_state)
 
-        top = Directions.UP;
+        top = Directions.UP
         topCount = up.get_resource_count();
         if(topCount < down.get_resource_count()):
             top = Directions.DOWN
@@ -72,10 +71,10 @@ class SampleBotAi(BotAi):
 
         moves = MovesBuilder(game_state, self.my_id)
 
-        if len(game_state.get_ants_of_player(self.my_id)) < self.startAntCount and game_state.get_current_round() >= self.startAntRound and game_state.get_current_round() < self.incAntRound:
+        if len(game_state.get_ants_of_player(self.my_id)) <= self.startAntCount and game_state.get_current_round() >= self.startAntRound and game_state.get_current_round() < self.incAntRound:
             self.createAnt(game_state, moves)
 
-        if len(game_state.get_ants_of_player(self.my_id)) < self.incAntCount and game_state.get_current_round() >= self.incAntRound:
+        if len(game_state.get_ants_of_player(self.my_id)) <= self.incAntCount and game_state.get_current_round() >= self.incAntRound:
             self.createAnt(game_state, moves)
 
         for my_ant in game_state.get_ants_of_player(self.my_id):
